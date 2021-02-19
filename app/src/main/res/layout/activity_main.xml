@@ -70,6 +70,31 @@
             android:text="!"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/optporcentaje"
+            android:text="%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/optExponente"
+            android:text="^"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/optRaiz"
+            android:text="√"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/optmod"
+            android:text="!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/optNumeroMayor"
+            android:text=">"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </RadioGroup>
 
     <TextView

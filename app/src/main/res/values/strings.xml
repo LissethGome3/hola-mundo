@@ -6,6 +6,10 @@
         <item>Multiplicacion</item>
         <item>Division</item>
         <item>Factorial</item>
-        <item></item>
+        <item>Porcentaje</item>
+        <item>Exponente</item>
+        <item>Raiz</item>
+        <item>mod</item>
+        <item>NumeroMayor</item>
     </string-array>
 </resources>
