@@ -1,14 +1,16 @@
 package com.ugb.MainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.ugb.myapplication.R;
+
+import java.util.IllegalFormatCodePointException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,54 +19,70 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void calcular(View view){
-        TextView tempVal = (TextView)findViewById(R.id.txtnum1);
-        double num1 = Double.parseDouble(tempVal.getText().toString());
 
-        tempVal = (TextView)findViewById(R.id.txtnum2);
-        double num2 = Double.parseDouble(tempVal.getText().toString());
+    public void Calcular(View view){
+        TextView TempVal = (TextView)findViewById(R.id.txtnum1);
+        double Num1 = Double.parseDouble(TempVal.getText().toString());
 
-        double respuesta = 1;
-        RadioButton optOperacionesBasicas = findViewById(R.id.optSuma);
-        if( optOperacionesBasicas.isChecked() ) {
-            respuesta = num1 + num2;
-        }
-        optOperacionesBasicas = findViewById(R.id.optResta);
-        if( optOperacionesBasicas.isChecked() ) {
-            respuesta = num1 - num2;
-        }
-        optOperacionesBasicas = findViewById(R.id.optMultiplicacion);
-        if( optOperacionesBasicas.isChecked() ) {
-            respuesta = num1 * num2;
-        }
-        optOperacionesBasicas = findViewById(R.id.optDivision);
-        if( optOperacionesBasicas.isChecked() ) {
-            respuesta = num1 / num2;
-        }
-        optOperacionesBasicas = findViewById(R.id.optFactorial);
-        // i++ -> i=i+1 -> i+=1
-        if( optOperacionesBasicas.isChecked() ) {
-            for(int i=2; i<=num1; i++){
-                respuesta *=i;
-            }
-        }
+        TempVal = (TextView)findViewById(R.id.txtnum2);
+        double Num2 = Double.parseDouble(TempVal.getText().toString());
 
-        Spinner cboOperacionesBasicas = findViewById(R.id.cboOperacionesBasicas);
-        switch (cboOperacionesBasicas.getSelectedItemPosition()){
-            case 0:
-                respuesta = num1+num2;
+        double Respuesta = 1;
+
+        Spinner cboOperaciones = findViewById(R.id.optOperacionesBasicas);
+        switch (cboOperaciones.getSelectedItemPosition()){
+            case 0: //Suma
+                Respuesta = Num1 +  Num2;
                 break;
-            case 1:
-                respuesta = num1-num2;
+
+            case 1: //Resta
+                Respuesta = Num1 - Num2;
                 break;
-            case 2:
-                respuesta = num1*num2;
+
+            case 2: //Multip.
+                Respuesta = Num1 * Num2;
                 break;
-            case 3:
-                respuesta = num1/num2;
+
+            case 3: //Div.
+                Respuesta = Num1 / Num2;
+                break;
+
+            case 4: //Factorial
+                for (int i = 2; i <= Num1; i++){
+                    Respuesta *=i;
+                }
+                break;
+
+            case 5: //Porcentaje
+                Respuesta = (Num1 / Num2) * 100;
+                break;
+
+            case 6: //Exponente
+                Respuesta = Math.pow(Num1, Num2);
+                break;
+
+            case 7: //Raiz
+                Respuesta = Math.pow(Num1, 1/Num2);
+                break;
+
+            case 8: //Mod
+                Respuesta = Num1 % Num2;
+                break;
+
+            case 9: //Num mayor
+                if (Num1 > Num2) {
+                    Respuesta = Num1;
+                } else  {
+                    Respuesta = Num2;
+                }
                 break;
         }
-        tempVal = findViewById(R.id.lblRespuesta);
-        tempVal.setText("Respuesta: "+ respuesta );
+        TempVal = findViewById(R.id.lblRespuesta);
+
+        if (cboOperaciones.getSelectedItemPosition() == 5) {
+            TempVal.setText("Respuesta: " + Respuesta + " %");
+        } else {
+            TempVal.setText("Respuesta" + Respuesta);
+        }
     }
 }
